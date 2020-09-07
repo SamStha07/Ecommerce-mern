@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');
 const GlobalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 
-const userRoute = require('./routes/authRoute');
+const authRoute = require('./routes/authRoute');
+const authAdminRoute = require('./routes/admin/authAdminRoute');
 
 const app = express();
 
@@ -29,7 +30,8 @@ mongoose
 app.use(bodyParser.json());
 
 // routes
-app.use('/api/users', userRoute);
+app.use('/api/users', authRoute);
+app.use('/api/admin', authAdminRoute);
 
 // middleware for unknown route to show error for all HTTPHeaders
 // Global error handling Middleware
