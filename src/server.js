@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const env = require('dotenv');
-const bodyParser = require('body-parser');
 
 const GlobalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
@@ -27,7 +26,7 @@ mongoose
   });
 
 // middleware
-app.use(bodyParser.json());
+app.use(express.json());
 
 // routes
 app.use('/api/users', authRoute);

@@ -1,17 +1,15 @@
 const express = require('express');
-const {
-  signup,
-  login,
-  requireSignIn,
-} = require('../controllers/authController.js');
+const { signup, login } = require('../controllers/authController.js');
+const { requireSignIn } = require('../middlewares/auth');
 
 const router = express.Router();
 
 router.post('/signup', signup);
 router.post('/login', login);
 
-router.post('/profile', requireSignIn, (req, res) => {
-  res.status(200).json({ user: 'profile' });
-});
+// To access this route first you need to be logged in
+// router.post('/profile', requireSignIn, (req, res) => {
+//   res.status(200).json({ user: 'profile' });
+// });
 
 module.exports = router;
