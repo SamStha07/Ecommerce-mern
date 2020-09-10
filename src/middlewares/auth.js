@@ -19,7 +19,7 @@ exports.requireSignIn = catchAsync(async (req, res, next) => {
   }
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  console.log(decoded);
+  // console.log(decoded);
 
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
@@ -29,5 +29,19 @@ exports.requireSignIn = catchAsync(async (req, res, next) => {
   }
 
   req.user = currentUser;
+  next();
+});
+
+// exports.userMiddleware = catchAsync(async (req, res, next) => {
+//   if (req.user.role !== 'user') {
+//     return res.status(400).json({ message: ' User access denied' });
+//   }
+//   next();
+// });
+
+exports.adminMiddleware = catchAsync(async (req, res, next) => {
+  if (req.user.role !== 'admin') {
+    return res.status(400).json({ message: 'User access denied' });
+  }
   next();
 });

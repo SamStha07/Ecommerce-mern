@@ -7,6 +7,7 @@ const AppError = require('./utils/appError');
 
 const authRoute = require('./routes/authRoute');
 const authAdminRoute = require('./routes/admin/authAdminRoute');
+const categoryRoute = require('./routes/categoryRoute');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(express.json());
 // routes
 app.use('/api/users', authRoute);
 app.use('/api/admin', authAdminRoute);
+app.use('/api/category', categoryRoute);
 
 // middleware for unknown route to show error for all HTTPHeaders
 // Global error handling Middleware
