@@ -10,8 +10,9 @@ exports.createProduct = catchAsync(async (req, res, next) => {
   // res.status(201).json({ files: req.files, body: req.body });
   let { productImages } = req.body;
   const createdBy = req.user.id;
-  productImages = [];
 
+  productImages = [];
+  // req.files is coming from multer-library file upload
   if (req.files.length > 0) {
     productImages = req.files.map((file) => {
       return { img: file.filename };

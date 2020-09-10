@@ -8,6 +8,7 @@ const { adminMiddleware, requireSignIn } = require('../middlewares/auth');
 
 const router = express.Router();
 
+// stores the readable files in uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(path.dirname(__dirname), 'uploads'));
