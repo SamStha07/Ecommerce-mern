@@ -2,7 +2,23 @@ import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 
-export default function HeaderNavbar() {
+import { connect } from 'react-redux';
+
+function HeaderNavbar() {
+  // const { authenticate } = props.auth;
+
+  // const loginToShow = () => {
+  //   if (!authenticate) {
+  //     return (
+  //       <li className="nav-link">
+  //         <NavLink to="/login" className="nav-link">
+  //           Login
+  //         </NavLink>
+  //       </li>
+  //     );
+  //   }
+  // };
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -22,6 +38,7 @@ export default function HeaderNavbar() {
                   Sign up
                 </NavLink>
               </li>
+              {/* {loginToShow} */}
               <li className="nav-link">
                 <NavLink to="/login" className="nav-link">
                   Login
@@ -34,3 +51,10 @@ export default function HeaderNavbar() {
     </div>
   );
 }
+
+// function mapStateToProps(state) {
+//   return { auth: state.auth };
+// }
+
+// export default connect(mapStateToProps)(HeaderNavbar);
+export default HeaderNavbar;

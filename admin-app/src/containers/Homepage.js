@@ -1,7 +1,7 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 
-export default function Homepage() {
+function Homepage() {
   return (
     <div>
       <Jumbotron
@@ -24,3 +24,5 @@ export default function Homepage() {
     </div>
   );
 }
+
+export default Homepage;
